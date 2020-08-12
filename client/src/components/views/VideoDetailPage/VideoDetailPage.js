@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import {Row, Col, List, Avatar} from 'antd';
 import Axios from 'axios';
 import SideVideo from './Section/SideVideo'
-import Comment from './Section/Comment'
 
 function VideoDetailPage(props){
 
@@ -10,7 +9,6 @@ function VideoDetailPage(props){
     const variable = { videoId: videoId}
     
     const [VideoDetail, setVideoDetail] = useState([])
-    const [Comments , setComments] = useState([])
     
 
     useEffect(() => {
@@ -23,15 +21,7 @@ function VideoDetailPage(props){
             }
         })
 
-        Axios.post('/api/comment/getComments', variable)
-        .then(response => {
-            if(response.data.success){
-                setComments(response.data.comments)
-                console.log(response.data.comments)
-            }else{
-                alert('코멘트 정보를 가져오는것을 실패')
-            }
-        })
+        
     },[])
 
     if(VideoDetail.writer){
@@ -52,9 +42,6 @@ function VideoDetailPage(props){
                                 />
                             
                         </List.Item>
-    
-                        {/* comments */}
-                        <Comment commentLists={Comments} postId={videoId}/>
                     </div>
      
                 </Col>

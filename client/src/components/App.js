@@ -6,9 +6,10 @@ import LandingPage from "./views/LandingPage/LandingPage.js";
 import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import NavBar from "./views/NavBar/NavBar";
-import Footer from "./views/Footer/Footer"
-import ViedoUploadPage from "./views/ViedoUploadPage/VideoUploadPage"
-import VideoDetailPage from "./views/VideoDetailPage/VideoDetailPage"
+import Footer from "./views/Footer/Footer";
+import ViedoUploadPage from "./views/ViedoUploadPage/VideoUploadPage";
+import VideoDetailPage from "./views/VideoDetailPage/VideoDetailPage";
+import MelonChartPage from "./views/MelonChartPage/MelonChartPage";
 
 
 function App() {
@@ -22,9 +23,10 @@ function App() {
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/video/upload" component={Auth(ViedoUploadPage, true)} />
           <Route exact path="/video/:videoId" component={Auth(VideoDetailPage,null)} />
+          <Route exact path="/melonchart" component={MelonChartPage}/>
         </Switch>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </Suspense>
   );
 }

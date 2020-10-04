@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import {Typography, Button, Form, message, Input, Icon} from 'antd';
+import {Typography, Form, message, Input, Icon} from 'antd';
 import Dropzone from 'react-dropzone';
 import Axios from 'axios';
 import {useSelector} from 'react-redux';
+import styled from "styled-components";
 
 const {TextArea} = Input;
 const {Title} = Typography;
@@ -167,21 +168,6 @@ function ViedoUploadPage(props){
             />
             <br/>
             <br/>
-
-            <select onChange={onPrivateChange}>
-
-                {PrivateOptions.map((item, index) => (
-                    <option key={index} value={item.value}>{item.label}</option>
-                ))}
-
-            </select>
-            <br/>
-            <br/>
-            <select onChange={onCategoryChange}>
-                {CategoryOptions.map((item, index) => (
-                    <option key={index} value={item.value}>{item.label}</option>
-                ))}
-            </select>
             <br/>
             <br/>
             <Button type="primary" size="large" onClick={onSubmit}>
@@ -191,5 +177,16 @@ function ViedoUploadPage(props){
         </div>
     )
 }
+
+const Button = styled.button`
+    width:85px;
+    height:40px;
+    float:right;
+    background-color:#1890ff;
+    border:none;
+    color:#fff;
+    font-weight:400;
+    border-radius:4px;
+`
 
 export default ViedoUploadPage

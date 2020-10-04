@@ -9,7 +9,7 @@ import NavBar from "./views/NavBar/NavBar";
 import ViedoUploadPage from "./views/ViedoUploadPage/VideoUploadPage";
 import VideoDetailPage from "./views/VideoDetailPage/VideoDetailPage";
 import MelonChartPage from "./views/MelonChartPage/MelonChartPage";
-
+import Search from "./views/Search/Search";
 
 function App() {
   return (
@@ -25,6 +25,7 @@ function App() {
           <Route exact path="/melonchart" component={MelonChartPage}/>
         </Switch>
       </div>
+
     </Suspense>
   );
 }

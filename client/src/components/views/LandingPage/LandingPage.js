@@ -3,8 +3,11 @@ import { FaCode } from "react-icons/fa";
 import { Card, Avatar, Col, Typography, Row } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
+import Search from "../Search/Search";
+
 const { Title } = Typography;
 const { Meta } = Card;
+
 function LandingPage() {
 
     const [Videos, setVideos] = useState([])
@@ -23,7 +26,7 @@ function LandingPage() {
 
 
     const renderCards = Videos.map((video, index) => {
-
+        
         var minutes = Math.floor(video.duration / 60);
         var seconds = Math.floor(video.duration - minutes * 60);
 
@@ -56,6 +59,7 @@ function LandingPage() {
 
     return (
         <div style={{ width: '85%', margin: '3rem auto' }}>
+            <Search/>
             <Row gutter={16}>
                 {renderCards}
             </Row>

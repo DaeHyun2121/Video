@@ -12,6 +12,9 @@ function LeftMenu(props) {
     <Menu.Item>
       <a href="/melonchart">Melon</a>
     </Menu.Item>
+    <Menu.Item key="boardupload">
+      <a href="/board">Board</a>
+    </Menu.Item>
     
   </Menu>
   )

@@ -59,7 +59,7 @@ function LandingPage() {
 
     return (
         <div style={{ width: '85%', margin: '3rem auto' }}>
-            <Search/>
+            {/* <Search/> */}
             <Row gutter={16}>
                 {renderCards}
             </Row>

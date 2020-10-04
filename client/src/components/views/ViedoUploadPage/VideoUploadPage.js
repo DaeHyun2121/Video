@@ -8,24 +8,13 @@ import styled from "styled-components";
 const {TextArea} = Input;
 const {Title} = Typography;
 
-const PrivateOptions = [
-    {value : 0, label: "Private"},
-    {value : 1, label: "Public"}
-]
 
-const CategoryOptions = [
-    {value : 0, label: "Film & Animation"},
-    {value : 1, label: "Autos & Vehicles"},
-    {value : 2, label: "Music"},
-    {value : 3, label: "Pets & Animals"}
-]
+
 
 function ViedoUploadPage(props){
     const user = useSelector(state => state.user);
     const [VideoTitle,setVideoTitle] = useState("")
     const [Description, setDescription] = useState("")
-    const [Private, setPrivate] = useState(0)
-    const [Category, setCategory] = useState("Film & Animation")
     const [FilePath, setFilePath] = useState("")
     const [Duration, setDuration] = useState("")
     const [ThumbnailPath, setThumbnailPath] = useState("")
@@ -39,13 +28,7 @@ function ViedoUploadPage(props){
         setDescription(e.currentTarget.value)
     }
     
-    const onPrivateChange = (e) => {
-        setPrivate(e.currentTarget.value)
-    }
 
-    const onCategoryChange = (e) => {
-        setCategory(e.currentTarget.value)
-    }
 
     //서버에 파일 저장
     const onDrop = (files) => {
@@ -95,9 +78,7 @@ function ViedoUploadPage(props){
             writer : user.userData._id,
             title : VideoTitle,
             description : Description,
-            privacy : Private,
             filePath : FilePath,
-            category : Category,
             duration : Duration,
             thumbnail: ThumbnailPath,
         }

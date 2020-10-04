@@ -9,7 +9,10 @@ import NavBar from "./views/NavBar/NavBar";
 import ViedoUploadPage from "./views/ViedoUploadPage/VideoUploadPage";
 import VideoDetailPage from "./views/VideoDetailPage/VideoDetailPage";
 import MelonChartPage from "./views/MelonChartPage/MelonChartPage";
-import Search from "./views/Search/Search";
+import BoardUploadPage from "./views/BoardUploadPage/BoardUploadPage";
+import BoardPage from "./views/BoardPage/BoardPage"; 
+import BoardDetailPage from "./views/BoardDetailPage/BoardDetailPage"; 
+
 
 function App() {
   return (
@@ -20,6 +23,9 @@ function App() {
           <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />   
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
+          <Route exact path="/board" component={Auth(BoardPage)}/>
+          <Route exact path="/board/upload" component={Auth(BoardUploadPage)} />
+          <Route exact path="/board/:boardId" component={Auth(BoardDetailPage)} />
           <Route exact path="/video/upload" component={Auth(ViedoUploadPage, true)} />
           <Route exact path="/video/:videoId" component={Auth(VideoDetailPage,null)} />
           <Route exact path="/melonchart" component={MelonChartPage}/>

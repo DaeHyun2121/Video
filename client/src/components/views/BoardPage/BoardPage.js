@@ -5,6 +5,62 @@ import axios from 'axios';
 import moment from 'moment';
 import styled from 'styled-components';
 
+const Layout = styled.div`
+    width: 60%;
+    margin: 3rem auto;
+    border:1px solid #dfdfdf;
+    border-radius:4px;
+`;
+const Head = styled.div`
+    display:flex;
+    width:100%;
+    height:50px;
+    border-bottom:1px solid #dfdfdf;
+
+    justify-content:center;
+    align-items:center;
+`;
+const FirstHead = styled.div`
+    width:70%;
+
+    text-align:center;
+`;
+const SecondHead = styled.div`
+    width:10%;
+    height:100%;
+
+    border:1px solid #dfdfdf;
+    border-top: none;
+    border-bottom:none;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+`;
+const ThirdHead = styled.div`
+    width:20%;
+    text-align:center;
+`;
+const Body = styled.div`
+    display:flex;
+    width:100%;
+    height:40px;
+
+    justify-content:center;
+    align-items:center;
+`;
+const FirstBody = styled.div`
+    width:70%;
+`;
+const SecondBody = styled.div`
+    width:10%;
+`;
+const ThirdBody = styled.div`
+    width:20%;
+`;
+
+
+
 const { Title } = Typography;
 const { Meta } = Card;
 
@@ -26,33 +82,41 @@ function BoardPage() {
 
 
     const renderCards = Boards.map((board, index) => {
-        return <Col lg={6} md={8} xs={24}>
-            <div>
-            <a href={`/board/${board._id}`} >
-            <Meta
-                title={board.title}
-            />
-            </a>
-            <span>{board.writer.name} </span><br />
-            <span style={{ marginLeft: '3rem' }}> {moment(board.createdAt).format("YYYY - MM/DD")} </span>
-            </div>
-        </Col>
+        return (
+        <div>
 
-    })
+        <Col>
+            <Body>
+                <FirstBody>
+                    <a href={`/board/${board._id}`} >
+                    <Meta
+                        title={board.title}
+                    />
+                    </a>
+                </FirstBody>
+                <SecondBody><span>{board.writer.name} </span> </SecondBody> <br />
+                <ThirdBody><span> {moment(board.createdAt).format("YYYY-MM-DD")} </span></ThirdBody>
+            </Body>
+        </Col>
+        </div>
+
+    )})
 
 
 
     return (
-        <div style={{ width: '85%', margin: '3rem auto' }}>
+        <Layout>
             {/* <Search/> */}
+                <Head>
+                    <FirstHead>제목</FirstHead>
+                    <SecondHead>작성자</SecondHead>
+                    <ThirdHead>작성일</ThirdHead>
+                </Head>
                 <Row gutter={16}>
                     {renderCards}
                 </Row>
-        </div>
+        </Layout>
     )
 }
-
-const Test = styled.div`
-border:1px solid #dfdfdf;`;
 
 export default BoardPage

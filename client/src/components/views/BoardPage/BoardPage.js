@@ -22,12 +22,12 @@ const Head = styled.div`
     a
 `;
 const FirstHead = styled.div`
-    width:70%;
-
+    width:10%;
+    
     text-align:center;
 `;
 const SecondHead = styled.div`
-    width:10%;
+    width:70%;
     height:100%;
 
     border:1px solid #dfdfdf;
@@ -49,16 +49,28 @@ const Body = styled.div`
 
     justify-content:center;
     align-items:center;
+
+    text-align:center;
 `;
 const FirstBody = styled.div`
-    width:70%;
+    width:10%;
 `;
 const SecondBody = styled.div`
-    width:10%;
+    width:70%;
+    height:100%;
+
+    border:1px solid #dfdfdf;
+    border-top: none;
+    border-bottom:none;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
 `;
 const ThirdBody = styled.div`
     width:20%;
 `;
+
 
 
 
@@ -84,39 +96,40 @@ function BoardPage() {
 
     const renderCards = Boards.map((board, index) => {
         return (
-        <div>
-
+        <>
         <Col>
             <Body>
-                <FirstBody>
-                    <a href={`/board/${board._id}`} >
+                <FirstBody>           
+                    <span>{board.writer.name} </span> 
+                </FirstBody>
+                <SecondBody><a href={`/board/${board._id}`} >
                     <Meta
                         title={board.title}
                     />
-                    </a>
-                </FirstBody>
-                <SecondBody><span>{board.writer.name} </span> </SecondBody> <br />
-                <ThirdBody><span> {moment(board.createdAt).format("YYYY-MM-DD")} </span></ThirdBody>
+                    </a></SecondBody> <br />
+                <ThirdBody><span> {moment(board.createdAt).format("YYYY.MM.DD")} </span></ThirdBody>
             </Body>
         </Col>
-        </div>
+        </>
 
     )})
 
 
 
     return (
+        <>
+        {/* <MainTitle>R_Board</MainTitle> */}
         <Layout>
-            {/* <Search/> */}
                 <Head>
-                    <FirstHead>제목</FirstHead>
-                    <SecondHead>작성자</SecondHead>
+                    <FirstHead>작성자</FirstHead>
+                    <SecondHead>제목</SecondHead>
                     <ThirdHead>작성일</ThirdHead>
                 </Head>
-                <Row gutter={16}>
+                <Row>
                     {renderCards}
                 </Row>
         </Layout>
+        </>
     )
 }
 

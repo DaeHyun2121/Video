@@ -8,3 +8,5 @@ yarn-debug.kog*
 yarn-error.log*
 
 .vscode
+
+/server/config

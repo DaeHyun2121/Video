@@ -19,6 +19,7 @@ const Head = styled.div`
 
     justify-content:center;
     align-items:center;
+    a
 `;
 const FirstHead = styled.div`
     width:70%;

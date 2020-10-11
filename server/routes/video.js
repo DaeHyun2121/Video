@@ -24,9 +24,6 @@ let storage = multer.diskStorage({
 
 const upload = multer({storage:storage}).single("file");
 
-//=================================
-//             Video
-//=================================
 
 router.post('/uploadfiles',(req,res) => {
     upload(req,res,err => {
@@ -38,7 +35,7 @@ router.post('/uploadfiles',(req,res) => {
 });
 
 router.post('/uploadVideo',(req,res) => {
-    //비디오 업로드를 저장한다.
+    //뮤직 업로드를 저장한다.
     const video = new Video(req.body)
 
     video.save((err, doc) => {
@@ -48,7 +45,7 @@ router.post('/uploadVideo',(req,res) => {
 });
 
 router.get('/getVideos',(req,res) => {
-    //비디오를 db에서 가져온다.
+    //뮤직를 db에서 가져온다.
 
     Video.find()
         .populate('writer')
@@ -72,11 +69,11 @@ router.post('/getVideoDetail',(req,res) => {
 
 
 router.post('/thumbnail',(req,res) => {
-    //썸네일 생성하고 비디오 러닝타임
+    //썸네일 생성하고 뮤직 러닝타임
     let filePath = ""
     let fileDuration = ""
 
-    //비디오 정보 
+    //뮤직 정보 
     ffmpeg.ffprobe(req.body.url, function(err, metadata){
         console.dir(metadata);
         console.log(metadata.format.duration);

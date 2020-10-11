@@ -87,7 +87,7 @@ function ViedoUploadPage(props){
             .then(response => {
                 if(response.data.success){
                     console.log(response.data)
-                    message.success('비디오 업로드 성공')
+                    message.success('뮤직 업로드 성공')
 
                     setTimeout(()=> {
                         props.history.push('/')
@@ -95,7 +95,7 @@ function ViedoUploadPage(props){
 
                     
                 }else{
-                    alert("비디오 업로드 실패")
+                    alert("뮤직 업로드 실패")
                 }
             })
     }
@@ -103,7 +103,7 @@ function ViedoUploadPage(props){
     return ( 
         <div style={{maxWidth: '700px', margin:'2rem auto'}}>   
             <div style={{textAlign:'center', marginBottom:'2rem'}}>
-                <Title level={2}>Upload Video</Title>
+                <Title level={2}>Upload</Title>
             </div>
         
 

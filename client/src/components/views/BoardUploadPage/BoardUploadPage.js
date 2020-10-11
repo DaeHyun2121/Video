@@ -13,8 +13,6 @@ function BoardUploadPage(props){
     const [BoardTitle,setBoardTitle] = useState("")
     const [Content, setContent] = useState("")
 
-
-    // 입력되게
     const onTitleChange = (e) => {
         setBoardTitle(e.currentTarget.value)
     }

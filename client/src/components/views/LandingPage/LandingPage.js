@@ -3,7 +3,33 @@ import { FaCode } from "react-icons/fa";
 import { Card, Avatar, Col, Typography, Row } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
-import Search from "../Search/Search";
+import styled from 'styled-components';
+
+const Layout = styled.div`
+    border:1px solid #dfdfdf;
+    border-radius:4px;
+`;
+const Img = styled.img`
+    width:100%;
+    border-radius:4px;
+    border-bottom-left-radius:0px;
+    border-bottom-right-radius:0px;
+`;
+
+const T = styled.p`
+    font-size:20px;
+    font-weight:600;
+    margin:0;
+`;
+
+const Top = styled.div`
+    
+`;
+const Bottom = styled.div`
+    padding:8px;
+`;
+
+const Span = styled.span``;
 
 const { Title } = Typography;
 const { Meta } = Card;
@@ -19,7 +45,7 @@ function LandingPage() {
                     console.log(response.data.videos)
                     setVideos(response.data.videos)
                 } else {
-                    alert('비디오 가져오기를 실패했습니다.')
+                    alert('뮤직 가져오기를 실패했습니다.')
                 }
             })
     }, [])
@@ -31,26 +57,17 @@ function LandingPage() {
         var seconds = Math.floor(video.duration - minutes * 60);
 
         return <Col lg={6} md={8} xs={24}>
-            <div style={{ position: 'relative', border: '1px solid #dfdfdf' ,borderRadius:'4px'}}>
+            <Layout>
+            <Top>
                 <a href={`/video/${video._id}`} >
-                <img style={{ width: '100%'}} alt="thumbnail" src={`http://localhost:5000/${video.thumbnail}`} />
-                <div className=" duration"
-                    style={{ bottom: 0, right:0, position: 'absolute', margin: '2px', 
-                    color: '#fff', backgroundColor: 'rgba(17, 17, 17, 0.8)', opacity: 0.8, 
-                    padding: '2px 4px', borderRadius:'2px', letterSpacing:'0.5px', fontSize:'12px',
-                    fontWeight:'500', lineHeight:'12px'}}>
-                    <span>{minutes} : {seconds}</span>
-                </div>
+                <Img alt="thumbnail" src={`http://localhost:5000/${video.thumbnail}`} />
                 </a>
-            </div><br />
-            <Meta
-                avatar={
-                    <Avatar src={video.writer.image} />
-                }
-                title={video.title}
-            />
-            <span>{video.writer.name} </span><br />
-            <span style={{ marginLeft: '3rem' }}> {moment(video.createdAt).format("YYYY - MM/DD")} </span>
+            </Top>
+            <Bottom>
+                <T>{video.title}</T>
+                <Span><i class="far fa-user"></i> {video.writer.name} </Span>
+            </Bottom>
+            </Layout>
         </Col>
 
     })
@@ -59,7 +76,6 @@ function LandingPage() {
 
     return (
         <div style={{ width: '85%', margin: '3rem auto' }}>
-            {/* <Search/> */}
             <Row gutter={16}>
                 {renderCards}
             </Row>

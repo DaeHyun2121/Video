@@ -1,7 +1,46 @@
 import React, { useEffect, useState } from 'react';
-import {Row, Col, List, Avatar} from 'antd';
 import Axios from 'axios';
-import SideVideo from './Section/SideVideo'
+import styled from 'styled-components';
+import moment from 'moment';
+
+const Layout = styled.div`
+    width:70%;
+    margin:20px auto;
+`;
+
+const TitleBlock = styled.div`
+    font-size:30px;
+    font-weight:500;
+`;
+
+const Test = styled.div`
+    height:50px;
+    border:1px solid #dfdfdf;
+    border-radius:10px;
+    line-height:50px;
+    text-align:center;
+`;
+
+const WriterBlock = styled(Test)`
+    width:30%;
+`;
+const DateBlock = styled(Test)`  
+    width:65%;
+`;
+
+const Audio = styled.audio`
+    width:100%;
+
+    margin-top:30px;
+`;
+const Box = styled.div`
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:20%;
+    height:50px;
+    float:right;
+`;
 
 function VideoDetailPage(props){
 
@@ -17,7 +56,7 @@ function VideoDetailPage(props){
             if(response.data.success){
                 setVideoDetail(response.data.videoDetail)
             }else{
-                alert('비디오 정보를 가져오길 실패했습니다.')
+                alert('뮤직 정보를 가져오길 실패했습니다.')
             }
         })
 
@@ -26,29 +65,23 @@ function VideoDetailPage(props){
 
     if(VideoDetail.writer){
         return(
-            <Row gutter={[16,16]}>
-                <Col lg={18} xs={24}>
-    
-                    <div style={{ width: '100%', padding:'3rem 4rem'}}>
-                        <video style={{width:'100%'}}src={`http://localhost:5000/${VideoDetail.filePath}`} controls />
-    
-                        <List.Item
-                            actions
-                        >
-                            <List.Item.Meta
-                                avatar={<Avatar src={VideoDetail.writer.image}/>}
-                                title={VideoDetail.writer.name}
-                                description={VideoDetail.description}
-                                />
-                            
-                        </List.Item>
-                    </div>
-     
-                </Col>
-                <Col lg={6} xs={24}>
-                    <SideVideo/>
-                </Col>
-            </Row>
+                <Layout>
+                    <TitleBlock>
+                        <i class="fas fa-play-circle" style={{marginRight:'10px'}}/>
+                        {VideoDetail.title}    
+                    </TitleBlock>  
+                    <Box>  
+                        <WriterBlock>
+                            <i class="far fa-user" style={{marginRight:'5px'}}/>{VideoDetail.writer.name}    
+                        </WriterBlock>     
+                        <DateBlock>
+                            <i class="far fa-calendar" style={{marginRight:'5px'}} />
+                            {moment(VideoDetail.createdAt).format("YYYY - MM/DD")}
+                        </DateBlock>     
+                    </Box>             
+
+                    <Audio src={`http://localhost:5000/${VideoDetail.filePath}`} controls />
+                </Layout>
         )
     }else{
         return(
